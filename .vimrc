@@ -304,6 +304,9 @@ nnoremap k gk
 nnoremap ' `
 nnoremap ` '
 
+nnoremap & :&&<CR>
+xnoremap & :&&<CR>
+
 " }
 
 " Typos {
@@ -332,21 +335,7 @@ cmap Tabe tabe
 
 " Leader {
 
-" <Leader> 1-9
-" Switching to buffer 1 - 9 is mapped to <Leader> [Buffer number]
-for buffer_no in range(1, 9)
-  execute "nmap <Leader>" . buffer_no . " :b" . buffer_no . "\<CR>"
-endfor
-
-" Fast saving
-nmap <leader>w :w!<cr>
-
-nmap <leader>c :VimChat <CR>
-nmap <leader>t :FriendsTwitter<CR>
-
-nnoremap <silent> <leader>tt :TagbarToggle<CR>
-
-nmap <silent> <leader>s :set nolist!<CR>
+" <Leader> F1-F9 {
 
 " Code folding options
 nmap <leader>f0 :set foldlevel=0<CR>
@@ -360,8 +349,18 @@ nmap <leader>f7 :set foldlevel=7<CR>
 nmap <leader>f8 :set foldlevel=8<CR>
 nmap <leader>f9 :set foldlevel=9<CR>
 
-" Toggle search highlighting
-nmap <silent> <leader>/ :set invhlsearch<CR>
+" }
+
+" <Leader> 1-9 {
+" Switching to buffer 1 - 9 is mapped to <Leader> [Buffer number]
+for buffer_no in range(1, 9)
+  execute "nmap <Leader>" . buffer_no . " :b" . buffer_no . "\<CR>"
+endfor
+" }
+
+" <Leader> A-Z {
+
+nmap <leader>c :VimChat <CR>
 
 " Some helpers to edit mode
 " http://vimcasts.org/e/14
@@ -371,8 +370,25 @@ map <leader>es :sp %%
 map <leader>ev :vsp %%
 map <leader>et :tabe %%
 
+nmap <silent> <leader>s :set nolist!<CR>
+
+nmap <leader>t :FriendsTwitter<CR>
+nnoremap <silent> <leader>tt :TagbarToggle<CR>
+
+" Fast saving
+nmap <leader>w :w!<cr>
+
+" }
+
+" <Leader> Other {
+
+" Toggle search highlighting
+nmap <silent> <leader>/ :set invhlsearch<CR>
+
 " Adjust viewports to the same size
 map <Leader>= <C-w>=
+
+" }
 
 " }
 
@@ -397,31 +413,22 @@ nmap <silent> <A-Right> :wincmd l<CR>
 
 " Easier moving in tabs and windows
 " The lines conflict with the default digraph mapping of <C-K>
-map <C-J> <C-W>j<C-W>_
-map <C-K> <C-W>k<C-W>_
-map <C-L> <C-W>l<C-W>_
-map <C-H> <C-W>h<C-W>_
-
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-noremap <silent> <c-y> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
-
-inoremap <C-U> <C-G>u<C-U>
+map <C-J> <C-W>j<C-W>
+map <C-K> <C-W>k<C-W>
+map <C-L> <C-W>l<C-W>
+map <C-H> <C-W>h<C-W>
 
 " }
 
 " SHIFT Modifier {
 
 nnoremap <S-U> :GundoToggle<CR>
-"nnoremap <S-U> :UndotreeToggle<cr>
 
 " }
 
 " Misc {
+
 nnoremap <silent> gb :exe('!w3m "'.expand('<cfile>').'"')<CR>
-nnoremap & :&&<CR>
-xnoremap & :&&<CR>
 
 " For when you forget to sudo.. Really Write the file.
 cmap w!! w !sudo tee % >/dev/null
