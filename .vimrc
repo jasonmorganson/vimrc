@@ -35,15 +35,15 @@ set encoding=utf-8
 
 " Persistent undo
 set undofile
-set undodir=~/.vim/.cache/undo
+set undodir=~/.vim/undo,.
 
 "" Backups
 set backup
-set backupdir=~/.vim/.cache/backup
+set backupdir=~/.vim/backup,.
 
 "" Swap files
 set swapfile
-set directory=~/.vim/.cache/swap
+set directory=~/.vim/swap,.
 
 " }
 
