@@ -11,7 +11,12 @@
 " VIM Mode {
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
-"set nocompatible  " be iMproved
+set nocompatible  " be iMproved
+" }
+" Use bundles config {
+    if filereadable(expand("~/.vimrc.bundles"))
+        source ~/.vimrc.bundles
+    endif
 " }
 " Filetype {
 " File-type highlighting and configuration.
@@ -29,21 +34,16 @@ set encoding=utf-8
 " VIM Folders {
 
 " Persistent undo
-"set undofile
-"set undodir=~/.vim/.cache/undo
+set undofile
+set undodir=~/.vim/.cache/undo
 
 "" Backups
-"set backup
-"set backupdir=~/.vim/.cache/backup
+set backup
+set backupdir=~/.vim/.cache/backup
 
 "" Swap files
-"set swapfile
-"set directory=~/.vim/.cache/swap
-
-"call EnsureExists('~/.vim/.cache')
-"call EnsureExists(&undodir)
-"call EnsureExists(&backupdir)
-"call EnsureExists(&directory)
+set swapfile
+set directory=~/.vim/.cache/swap
 
 " }
 
