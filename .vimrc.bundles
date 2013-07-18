@@ -6,8 +6,8 @@
 
 " Auto install vundle {
 if !isdirectory(expand("~/.vim/bundle/vundle"))
-    !mkdir -p ~/.vim/bundle
-    !git clone git://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+    silent !mkdir -p ~/.vim/bundle
+    silent !git clone git://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
     let s:bootstrap=1
 endif
 " }
@@ -217,3 +217,11 @@ Bundle 'vim-scripts/TwitVim'
 Bundle 'jasonmorganson/vim-pluginrc'
 " }
 
+" Bootstrap plugins {
+if exists('s:bootstrap')
+    if s:bootstrap
+        execute 'BundleInstall'
+        unlet s:bootstrap
+    endif
+endif
+" }
