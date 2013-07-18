@@ -40,6 +40,9 @@ set viminfo+=n~/.vim/viminfo
 set undofile
 set undodir=~/.vim/undo,.
 
+" Views
+set viewdir=~/.vim/view,.
+
 "" Backups
 set backup
 set backupdir=~/.vim/backup,.
