@@ -14,6 +14,8 @@
 set nocompatible  " be iMproved
 " }
 
+" The default leader is '\', but many people prefer ',' as it's in a standard
+" location.
 " Change leader to a comma because the backslash is too far away
 " That means all \x commands turn into ,x
 " The mapleader has to be set before vundle starts loading all
@@ -271,13 +273,35 @@ set shortmess+=filmnrxoOtT
 
 " Mappings {
 
+" Consistency {
 
-" Fix command typos (stolen from Adam Katz)
-nnoremap ; :
+" Make Y consistent with C and D.  See :help Y.
+nnoremap Y y$
+
+" }
+
+" Useful {
 
 " ` is more useful than ' but less accessible.
 nnoremap ' `
 nnoremap ` '
+
+" }
+
+" Typos {
+
+" Fix command typos (stolen from Adam Katz)
+nnoremap ; :
+
+" }
+
+" Leader {
+
+" <Leader> 1-9
+" Switching to buffer 1 - 9 is mapped to <Leader> [Buffer number]
+for buffer_no in range(1, 9)
+  execute "nmap <Leader>" . buffer_no . " :b" . buffer_no . "\<CR>"
+endfor
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -285,12 +309,20 @@ nmap <leader>w :w!<cr>
 nmap <leader>c :VimChat <CR>
 nmap <leader>t :FriendsTwitter<CR>
 
-nnoremap <F3> :NumbersToggle<CR>
-nnoremap <F4> :NumbersOnOff<CR>
-
 nnoremap <silent> <leader>tt :TagbarToggle<CR>
 
 nmap <silent> <leader>s :set nolist!<CR>
+
+" }
+
+" Function Keys {
+
+nnoremap <F3> :NumbersToggle<CR>
+nnoremap <F4> :NumbersOnOff<CR>
+
+" }
+
+" ALT Modifier {
 
 " Add mapping for moving between windows with ALT-<arrow keys> "
 nmap <silent> <A-Up>    :wincmd k<CR>
@@ -298,26 +330,31 @@ nmap <silent> <A-Down>  :wincmd j<CR>
 nmap <silent> <A-Left>  :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
 
+" }
+
+" CTRL Modifier {
+
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 noremap <silent> <c-y> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
-" Switching to buffer 1 - 9 is mapped to <Leader> [Buffer number]
-for buffer_no in range(1, 9)
-  execute "nmap <Leader>" . buffer_no . " :b" . buffer_no . "\<CR>"
-endfor
+inoremap <C-U> <C-G>u<C-U>
 
-nnoremap <silent> gb :exe('!w3m "'.expand('<cfile>').'"')<CR>
+" }
+
+" SHIFT Modifier {
 
 nnoremap <S-U> :GundoToggle<CR>
 "nnoremap <S-U> :UndotreeToggle<cr>
 
-inoremap <C-U> <C-G>u<C-U>
+" }
+
+" Misc {
+nnoremap <silent> gb :exe('!w3m "'.expand('<cfile>').'"')<CR>
 nnoremap & :&&<CR>
 xnoremap & :&&<CR>
-" Make Y consistent with C and D.  See :help Y.
-nnoremap Y y$
+" }
 
 " }
 
