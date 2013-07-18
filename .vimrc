@@ -273,6 +273,17 @@ set shortmess+=filmnrxoOtT
 
 " Mappings {
 
+" Fixes {
+
+" Fix home and end keybindings for screen, particularly on mac
+" - for some reason this fixes the arrow keys too. huh.
+map [F $
+imap [F $
+map [H g0
+imap [H g0
+
+" }
+
 " Consistency {
 
 " Yank from the cursor to the end of the line, to be consistent with C and D.
@@ -281,6 +292,10 @@ nnoremap Y y$
 " }
 
 " Useful {
+
+" Visual shifting (does not exit Visual mode)
+vnoremap < <gv
+vnoremap > >gv
 
 " Wrapped lines goes down/up to next row, rather than next line in file.
 nnoremap j gj
@@ -296,6 +311,10 @@ nnoremap ` '
 
 " Fix command typos (stolen from Adam Katz)
 nnoremap ; :
+
+" Easier horizontal scrolling
+map zl zL
+map zh zH
 
 " Stupid SHIFT key mistakes
 command! -bang -nargs=* -complete=file E e<bang> <args>
@@ -345,6 +364,17 @@ nmap <leader>f9 :set foldlevel=9<CR>
 " Toggle search highlighting
 nmap <silent> <leader>/ :set invhlsearch<CR>
 
+" Some helpers to edit mode
+" http://vimcasts.org/e/14
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+map <leader>ew :e %%
+map <leader>es :sp %%
+map <leader>ev :vsp %%
+map <leader>et :tabe %%
+
+" Adjust viewports to the same size
+map <Leader>= <C-w>=
+
 " }
 
 " Function Keys {
@@ -393,49 +423,11 @@ nnoremap <S-U> :GundoToggle<CR>
 nnoremap <silent> gb :exe('!w3m "'.expand('<cfile>').'"')<CR>
 nnoremap & :&&<CR>
 xnoremap & :&&<CR>
-" }
+
+" For when you forget to sudo.. Really Write the file.
+cmap w!! w !sudo tee % >/dev/null
 
 " }
-
-" Key (re)Mappings {
-
-    " Shortcuts
-    " Change Working Directory to that of the current file
-    cmap cwd lcd %:p:h
-    cmap cd. lcd %:p:h
-
-    " Visual shifting (does not exit Visual mode)
-    vnoremap < <gv
-    vnoremap > >gv
-
-    " Fix home and end keybindings for screen, particularly on mac
-    " - for some reason this fixes the arrow keys too. huh.
-    map [F $
-    imap [F $
-    map [H g0
-    imap [H g0
-
-    " For when you forget to sudo.. Really Write the file.
-    cmap w!! w !sudo tee % >/dev/null
-
-    " Some helpers to edit mode
-    " http://vimcasts.org/e/14
-    cnoremap %% <C-R>=expand('%:h').'/'<cr>
-    map <leader>ew :e %%
-    map <leader>es :sp %%
-    map <leader>ev :vsp %%
-    map <leader>et :tabe %%
-
-    " Adjust viewports to the same size
-    map <Leader>= <C-w>=
-
-    " Map <Leader>ff to display all lines with keyword under cursor
-    " and ask which one to jump to
-    nmap <Leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
-
-    " Easier horizontal scrolling
-    map zl zL
-    map zh zH
 
 " }
 
