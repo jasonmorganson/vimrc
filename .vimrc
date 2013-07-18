@@ -13,6 +13,14 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible  " be iMproved
 " }
+
+" Change leader to a comma because the backslash is too far away
+" That means all \x commands turn into ,x
+" The mapleader has to be set before vundle starts loading all
+" the plugins.
+let mapleader=","
+let g:mapleader = ","
+
 " Use bundles config {
     if filereadable(expand("~/.vimrc.bundles"))
         source ~/.vimrc.bundles
@@ -27,40 +35,19 @@ filetype on
 filetype indent on
 filetype plugin on
 " }
-" Encoding {
-scriptencoding utf-8
-set encoding=utf-8
-" }
-" VIM Folders {
-
-" VIM info file
-set viminfo+=n~/.vim/viminfo
-
-" Tags
-set tags=~/.vim/tags,.
-
-" Persistent undo
-set undofile
-set undolevels=1000         " Maximum number of changes that can be undone
-set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
-set undodir=~/.vim/undo,.
-
-" Views
-set viewdir=~/.vim/view,.
-
-"" Backups
-set backup
-set backupdir=~/.vim/backup,.
-
-"" Swap files
-set swapfile
-set directory=~/.vim/swap,.
-
-" }
+" Syntax {
 
 " Syntax highlighting
 syntax on
 syntax enable
+
+" }
+" Encoding {
+
+scriptencoding utf-8
+set encoding=utf-8
+
+" }
 
 " Theme
 colorscheme jason
@@ -283,12 +270,7 @@ set shortmess+=filmnrxoOtT
 " }
 
 " Mappings {
-" Change leader to a comma because the backslash is too far away
-" That means all \x commands turn into ,x
-" The mapleader has to be set before vundle starts loading all
-" the plugins.
-"let mapleader=","
-"let g:mapleader = ","
+
 
 " Fix command typos (stolen from Adam Katz)
 nnoremap ; :
@@ -449,5 +431,32 @@ nnoremap Y y$
     " Easier horizontal scrolling
     map zl zL
     map zh zH
+
+" }
+
+" VIM Folders {
+
+" VIM info file
+set viminfo+=n~/.vim/viminfo
+
+" Tags
+set tags=~/.vim/tags,.
+
+" Persistent undo
+set undofile
+set undolevels=1000         " Maximum number of changes that can be undone
+set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
+set undodir=~/.vim/undo,.
+
+" Views
+set viewdir=~/.vim/view,.
+
+"" Backups
+set backup
+set backupdir=~/.vim/backup,.
+
+"" Swap files
+set swapfile
+set directory=~/.vim/swap,.
 
 " }
