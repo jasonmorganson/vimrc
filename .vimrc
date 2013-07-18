@@ -33,6 +33,9 @@ set encoding=utf-8
 " }
 " VIM Folders {
 
+" VIM info file
+set viminfo+=n~/.vim/viminfo
+
 " Persistent undo
 set undofile
 set undodir=~/.vim/undo,.
