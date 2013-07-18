@@ -21,7 +21,6 @@ set nocompatible  " be iMproved
 " The mapleader has to be set before vundle starts loading all
 " the plugins.
 let mapleader=","
-let g:mapleader = ","
 
 " Use bundles config {
     if filereadable(expand("~/.vimrc.bundles"))
