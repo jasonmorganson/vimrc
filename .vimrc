@@ -36,8 +36,13 @@ set encoding=utf-8
 " VIM info file
 set viminfo+=n~/.vim/viminfo
 
+" Tags
+set tags=~/.vim/tags,.
+
 " Persistent undo
 set undofile
+set undolevels=1000         " Maximum number of changes that can be undone
+set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
 set undodir=~/.vim/undo,.
 
 " Views
@@ -53,158 +58,184 @@ set directory=~/.vim/swap,.
 
 " }
 
-syntax on                   " Syntax highlighting
+" Syntax highlighting
+syntax on
 syntax enable
 
+" Theme
 colorscheme jason
 
 " Settings {
+" Cursor {
 
-set t_Co=256            " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
+" Highlight current line
+set cursorline
 
-" Cursor
-set cursorline                  " Highlight current line
-set nostartofline     " keep cursor in same column for long-range motion cmds
+" Keep cursor in same column for long-range motion commands
+set nostartofline
 
-" Auto
-set autowrite                  " automatically write a file when leaving a modified buffer
-set autoread                   " Automatically re-read files changed outside of Vim
+" }
+" Auto {
 
-" Mouse
-set mouse=a                 " Automatically enable mouse usage
-set mousehide               " Hide the mouse cursor while typing
+" Automatically re-read files changed outside of Vim
+set autoread
 
-" Line spacing
-set linespace=0                 " No extra spaces between rows
+" Automatically write a file when leaving a modified buffer
+set autowrite
 
-" Wrap
-set nowrap                      " Wrap long lines
-set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
+" }
+" Mouse {
+
+" Automatically enable mouse usage
+set mouse=a
+
+" Hide the mouse cursor while typing
+set mousehide
+
+" }
+" Line spacing {
+
+" No extra spaces between rows
+set linespace=0
+
+" }
+" Wrap {
+
 set textwidth=80
-set linebreak                   " For lines longer than the window,
-                                " wrap intelligently. This doesn't
-                                " insert hard line breaks.
-set showbreak=↪\ \              " string to put before wrapped screen lines
 
-" Tabs
-set autoindent                  " Indent at the same level of the previous line
+" Wrap long lines
+set nowrap
+
+" Backspace and cursor keys wrap too
+set whichwrap=b,s,h,l,<,>,[,]
+
+" For lines longer than the window, wrap intelligently.
+" This doesn't insert hard line breaks.
+set linebreak
+
+" String to put before wrapped screen lines
+set showbreak=↪\ \
+
+" }
+" Tabs {
+set autoindent            " Indent at the same level of the previous line
 set smartindent
 set smarttab              " <TAB> in front of line inserts 'shiftwidth' blanks
-set shiftround            " round to 'shiftwidth' for "<<" and ">>"
-set expandtab                   " Tabs are spaces, not tabs
-set tabstop=4                   " An indentation every four columns
-set softtabstop=4               " Let backspace delete indent
+set shiftround            " Round to 'shiftwidth' for "<<" and ">>"
+set expandtab             " Tabs are spaces, not tabs
+set tabstop=4             " An indentation every four columns
+set softtabstop=4         " Let backspace delete indent
 set shiftwidth=4
-set tabpagemax=15               " Only show 15 tabs
-
-" Scrolling
-set scrolljump=5                " Lines to scroll when cursor leaves screen
-set scrolloff=3                 " Minimum lines to keep above and below cursor
-set sidescrolloff=2             " min # of columns to keep left/right of cursor
-
-" Folding
+set tabpagemax=15         " Only show 15 tabs
+" }
+" Scrolling {
+set scrolljump=5      " Lines to scroll when cursor leaves screen
+set scrolloff=3       " Minimum lines to keep above and below cursor
+set sidescrolloff=2   " Minimum number of columns to keep left/right of cursor
+" }
+" Folding {
 set foldenable                  " Auto fold code
 set foldcolumn=1
-
-" Line numbers
+" }
+" Line numbers {
 set number                          " Line numbers on
 set numberwidth=4
-
-" Color column
+" }
+" Color column {
 set colorcolumn=+1
-
-" Conceal
+" }
+" Conceal {
 set conceallevel=2
 set concealcursor=nc
-
-" Spelling
+" }
+" Spelling {
 set spell                           " Spell checking on
-
-" Search
+" }
+" Search {
 set incsearch                   " Find as you type search
 set hlsearch                    " Highlight search terms
 set ignorecase                  " Case insensitive search
 set smartcase                   " Case sensitive when searching with uppercase
 set gdefault                    " For :substitute, use the /g flag by default
+"}
+" Wild menu {
 
-" Wild menu
 set complete-=i
+
+" Show list instead of just completing
 set wildmenu                    " Show list instead of just completing
-set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
 
-" List
+" Command <Tab> completion, list matches, then longest common part, then all.
+set wildmode=list:longest,full
+
+" }
+" List {
+
 set list
-set listchars=tab:›\ ,trail:•,precedes:<,extends:#,nbsp:. " Highlight problematic whitespace
 
-" Buffers
-set hidden                          " Allow buffer switching without saving
+" Highlight problematic whitespace
+set listchars=tab:›\ ,trail:•,precedes:<,extends:#,nbsp:.
+
+" }
+" Buffers {
+
+" Allow buffer switching without saving.
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
 " http://items.sjbach.com/319/configuring-vim-right
 set hidden
 
-" Windows
-set winminheight=0              " Windows can be 0 line high
-
-" View
-set showmode                    " Display the current mode
-set showmatch                   " Show matching brackets/parenthesis
-"set matchpairs+=<:>             " Match, to be used with %
-set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
-set virtualedit=onemore             " Allow for cursor beyond last character
-"set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
+" }
+" History {
 set history=1000                    " Store a ton of history (default is 20)
-set display+=lastline " show last line, even if it doesn't fit in the window
+" }
+" Windows {
+set winminheight=0              " Windows can be 0 line high
+" }
+" View {
 
-set cmdheight=2 		  " # of lines for the command window
-                      " cmdheight=2 helps avoid 'Press ENTER...'
-                      " prompts
+" Better Unix / Windows compatibility
+set viewoptions=folds,options,cursor,unix,slash
 
-set nojoinspaces	  	  " Use only one space after '.' when joining
-                        " lines, instead of two
+" }
+" Editing {
 
-"set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
+" Allow for cursor beyond last character
+set virtualedit=onemore
 
-set tags=./tags;/,~/.vimtags
+" Use only one space after '.' when joining lines, instead of two
+set nojoinspaces
 
-"set completeopt+=longest 	" better omni-complete menu
-  set formatoptions+=j 	" delete comment char on second line when
-                        " joining two commented lines
-set nrformats-=octal      " don't treat numbers with leading zeros as octal
-                          " when incrementing/decrementing
+" Backspace over autoindent, line breaks, start of insert
+" (see :help 'backspace')
+set backspace=indent,eol,start
+
+" }
+" Clipboard {
+
 " Link the system clipboard with the unnamed register
 set clipboard=unnamed
-
-" Don't redraw while executing macros (good performance config)
-set lazyredraw
-
-" For regular expressions turn magic on
-set magic
 
 " Visual selection automatically copied to the clipboard
 set go+=a
 
-" Backspace over autoindent, line breaks, start of insert (see :help 'backspace')
-set backspace=indent,eol,start
-
-" abbrev. of messages (avoids 'hit enter')
-set shortmess+=filmnrxoOtT
-
-set backup                  " Backups are nice ...
-if has('persistent_undo')
-    set undofile                " So is persistent undo ...
-    set undolevels=1000         " Maximum number of changes that can be undone
-    set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
-endif
-
-
+" }
+" Ruler {
 if has('cmdline_info')
     set ruler                   " Show the ruler
     set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " A ruler on steroids
     set showcmd                 " Show partial commands in status line and
                                 " Selected characters/lines in visual mode
 endif
+" }
+" Commandline {
 
+" Number of lines for the command window
+" cmdheight=2 helps avoid 'Press ENTER...' prompts
+set cmdheight=2
+
+" }
+" Status line {
 if has('statusline')
     set laststatus=2
 
@@ -216,9 +247,39 @@ if has('statusline')
     set statusline+=\ [%{getcwd()}]          " Current dir
     set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 endif
+" }
+" Misc {
+set showmode                    " Display the current mode
+set showmatch                   " Show matching brackets/parenthesis
+"set matchpairs+=<:>             " Match, to be used with %
+"set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
+set display+=lastline " show last line, even if it doesn't fit in the window
+
 
 set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
 
+"set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
+
+
+"set completeopt+=longest 	" better omni-complete menu
+  set formatoptions+=j 	" delete comment char on second line when
+                        " joining two commented lines
+set nrformats-=octal      " don't treat numbers with leading zeros as octal
+                          " when incrementing/decrementing
+                          "
+                          "
+
+" Don't redraw while executing macros (good performance config)
+set lazyredraw
+
+" For regular expressions turn magic on
+set magic
+
+
+
+" abbrev. of messages (avoids 'hit enter')
+set shortmess+=filmnrxoOtT
+" }
 " }
 
 " Mappings {
