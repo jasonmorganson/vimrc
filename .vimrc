@@ -443,7 +443,7 @@ cmap w!! w !sudo tee % >/dev/null
 set viminfo+=n~/.vim/viminfo
 
 " Tags
-set tags=~/.vim/tags,.
+set tags=./tags,tags,~/.vim/tags
 
 " Persistent undo
 set undofile
