@@ -22,9 +22,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 " }
 
-let g:spf13_bundle_groups=[]
-let g:override_spf13_bundles = 1
-
 " General {
 Bundle 'matchit.zip'
 Bundle 'tomtom/tlib_vim'
