@@ -400,6 +400,7 @@ map <Leader>= <C-w>=
 
 " BACKSLASH Modifier {
 
+nmap \b :set <C-R>=&laststatus == 0 ? 'laststatus=2' : 'laststatus=0'<CR><CR>
 nmap \c :setlocal cursorline!<CR>
 nmap \e :setlocal <C-R>=&colorcolumn == '+1' ? 'colorcolumn=0' : 'colorcolumn=+1'<CR><CR>
 nmap \f :setlocal <C-R>=&foldcolumn == 1 ? 'foldcolumn=0' : 'foldcolumn=1'<CR><CR>
