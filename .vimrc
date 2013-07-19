@@ -240,7 +240,7 @@ if has('statusline')
 endif
 " }
 " Misc {
-set showmode                    " Display the current mode
+set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 set showmatch                   " Show matching brackets/parenthesis
 "set matchpairs+=<:>             " Match, to be used with %
 "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
