@@ -78,6 +78,7 @@ Bundle 'maxbrunsfeld/vim-yankstack'
 Bundle 'bufexplorer.zip'
 Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'thinca/vim-ref'
 " }
 
 " GUI {
