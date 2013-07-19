@@ -138,6 +138,7 @@ set concealcursor=nc
 " }
 " Spelling {
 set spell                           " Spell checking on
+set spelllang=en_us
 " }
 " Search {
 set incsearch                   " Find as you type search
@@ -481,6 +482,9 @@ set viminfo+=n~/.vim/viminfo
 
 " Tags
 set tags=./tags,tags,~/.vim/tags
+
+" Spelling
+set spellfile=~/.vim/spell/en.utf-8.add
 
 " Persistent undo
 set undofile
