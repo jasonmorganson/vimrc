@@ -396,6 +396,7 @@ map <Leader>= <C-w>=
 
 nnoremap <F3> :NumbersToggle<CR>
 nnoremap <F4> :NumbersOnOff<CR>
+nnoremap <F8> :TagbarToggle<CR>
 
 " }
 
