@@ -270,6 +270,11 @@ set magic
 
 " abbrev. of messages (avoids 'hit enter')
 set shortmess+=filmnrxoOtTA
+
+" current directory is always matching the
+" content of the active window
+set autochdir
+
 " }
 " }
 
