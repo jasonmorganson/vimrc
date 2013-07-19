@@ -333,6 +333,12 @@ cmap Tabe tabe
 
 " }
 
+" Function Keys {
+
+nnoremap <F8> :TagbarToggle<CR>
+
+" }
+
 " Leader {
 
 " <Leader> F1-F9 {
@@ -392,11 +398,23 @@ map <Leader>= <C-w>=
 
 " }
 
-" Function Keys {
+" BACKSLASH Modifier {
 
-nnoremap <F3> :NumbersToggle<CR>
-nnoremap <F4> :NumbersOnOff<CR>
-nnoremap <F8> :TagbarToggle<CR>
+nmap \c :setlocal cursorline!<CR>
+nmap \e :setlocal <C-R>=&colorcolumn == '+1' ? 'colorcolumn=0' : 'colorcolumn=+1'<CR><CR>
+nmap \f :setlocal <C-R>=&foldcolumn == 1 ? 'foldcolumn=0' : 'foldcolumn=1'<CR><CR>
+nmap \i :IndentGuidesToggle<CR>
+nmap \l :setlocal number!<CR>:setlocal relativenumber!<CR>:setlocal number?<CR>:setlocal relativenumber?<CR>
+nmap \n :setlocal number!<CR>:setlocal number?<CR>
+nmap \p :set paste!<CR>
+nmap \q :QuickfixsignsToggle<CR>
+nmap \r :setlocal relativenumber!<CR>:setlocal relativenumber?<CR>
+nmap \s :setlocal invspell<CR>
+nmap \t :<C-u>call ShowTrailingWhitespace#Toggle(0)<Bar>echo (ShowTrailingWhitespace#IsSet() ? 'Show trailing whitespace' : 'Not showing trailing whitespace')<CR>
+nmap \u :setlocal list!<CR>:setlocal list?<CR>
+nmap \w :setlocal wrap!<CR>:setlocal wrap?<CR>
+nmap \x :setlocal cursorcolumn!<CR>
+nmap \/ :nohlsearch<CR>
 
 " }
 
