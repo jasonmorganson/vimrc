@@ -355,6 +355,8 @@ cmap Tabe tabe
 " Function Keys {
 
 nnoremap <F8> :TagbarToggle<CR>
+nnoremap <F9> :VimChat<CR>
+nnoremap <F10> :FriendsTwitter<CR>
 
 " }
 
@@ -385,8 +387,6 @@ endfor
 
 " <Leader> A-Z {
 
-nmap <leader>c :VimChat <CR>
-
 " Some helpers to edit mode
 " http://vimcasts.org/e/14
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
@@ -395,20 +395,12 @@ map <leader>es :sp %%
 map <leader>ev :vsp %%
 map <leader>et :tabe %%
 
-nmap <silent> <leader>s :set nolist!<CR>
-
-nmap <leader>t :FriendsTwitter<CR>
-nnoremap <silent> <leader>tt :TagbarToggle<CR>
-
 " Fast saving
 nmap <leader>w :w!<cr>
 
 " }
 
 " <Leader> Other {
-
-" Toggle search highlighting
-nmap <silent> <leader>/ :set invhlsearch<CR>
 
 " Adjust viewports to the same size
 map <Leader>= <C-w>=
@@ -434,7 +426,7 @@ nmap \t :<C-u>call ShowTrailingWhitespace#Toggle(0)<Bar>echo (ShowTrailingWhites
 nmap \u :setlocal list!<CR>:setlocal list?<CR>
 nmap \w :setlocal wrap!<CR>:setlocal wrap?<CR>
 nmap \x :setlocal cursorcolumn!<CR>
-nmap \/ :nohlsearch<CR>
+nmap \/ :setlocal invhlsearch<CR>
 
 " }
 
