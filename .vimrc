@@ -233,6 +233,9 @@ if has('statusline')
     set statusline+=%{fugitive#statusline()} " Git Hotness
     set statusline+=\ [%{&ff}/%Y]            " Filetype
     set statusline+=\ [%{getcwd()}]          " Current dir
+    set statusline+=%#warningmsg#
+    set statusline+=%{SyntasticStatuslineFlag()}  " Syntastic Goodness
+    set statusline+=%*
     set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 endif
 " }
