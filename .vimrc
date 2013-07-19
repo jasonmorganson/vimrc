@@ -266,7 +266,7 @@ set magic
 
 
 " abbrev. of messages (avoids 'hit enter')
-set shortmess+=filmnrxoOtT
+set shortmess+=filmnrxoOtTA
 " }
 " }
 
