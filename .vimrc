@@ -300,6 +300,9 @@ nnoremap Y y$
 
 " Useful {
 
+" Use `'` to repeat last `;` in reverse (default is `,`)
+nnoremap ' ,
+
 " Visual shifting (does not exit Visual mode)
 vnoremap < <gv
 vnoremap > >gv
@@ -307,6 +310,14 @@ vnoremap > >gv
 " Wrapped lines goes down/up to next row, rather than next line in file.
 nnoremap j gj
 nnoremap k gk
+
+" gi moves to last insert mode
+" gI moves to last modification
+nnoremap gI `.
+
+" Jump to start and end of line using the home row keys
+map H ^
+map L $
 
 " ` is more useful than ' but less accessible.
 nnoremap ' `
@@ -438,6 +449,12 @@ nmap <silent> <A-Right> :wincmd l<CR>
 " }
 
 " CTRL Modifier {
+
+" In command-line mode, C-a jumps to beginning (to match C-e).
+cnoremap <C-a> <Home>
+
+" Select all
+map <C-a> ggVG
 
 " Easier moving in tabs and windows
 " The lines conflict with the default digraph mapping of <C-K>
