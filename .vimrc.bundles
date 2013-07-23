@@ -215,6 +215,7 @@ Bundle 'joonty/vdebug.git'
 " }
 
 " Other {
+Bundle 'wakatime/vim-wakatime'
 Bundle 'ironcamel/vimchat'
 Bundle 'vim-scripts/TwitVim'
 " }
