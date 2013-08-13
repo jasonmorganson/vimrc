@@ -194,6 +194,7 @@ Bundle 'tristen/vim-sparkup'
 " Misc {
 Bundle 'tpope/vim-markdown'
 Bundle 'vim-pandoc/vim-pandoc'
+Bundle 'saltstack/salt-vim'
 " }
 
 " Templating {
