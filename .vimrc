@@ -419,6 +419,7 @@ nmap \f :setlocal <C-R>=&foldcolumn == 1 ? 'foldcolumn=0' : 'foldcolumn=1'<CR><C
 nmap \i :IndentGuidesToggle<CR>
 nmap \l :setlocal number!<CR>:setlocal relativenumber!<CR>:setlocal number?<CR>:setlocal relativenumber?<CR>
 nmap \n :setlocal number!<CR>:setlocal number?<CR>
+nmap \m :MatchmakerToggle<CR>
 nmap \p :set paste!<CR>
 nmap \q :QuickfixsignsToggle<CR>
 nmap \r :setlocal relativenumber!<CR>:setlocal relativenumber?<CR>
