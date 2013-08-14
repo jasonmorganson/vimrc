@@ -95,6 +95,7 @@ Bundle 'milkypostman/vim-togglelist'
 " }
 
 " Colorschemes {
+Bundle 'SyntaxAttr.vim'
 Bundle 'godlygeek/csapprox'
 Bundle 'lilydjwg/colorizer'
 Bundle 'flazz/vim-colorschemes'
