@@ -95,14 +95,14 @@ Bundle 'milkypostman/vim-togglelist'
 " }
 
 " Colorschemes {
-Bundle 'SyntaxAttr.vim'
 Bundle 'godlygeek/csapprox'
-Bundle 'lilydjwg/colorizer'
+"Bundle 'lilydjwg/colorizer'
 Bundle 'flazz/vim-colorschemes'
-Bundle 'guns/xterm-color-table.vim'
-Bundle 'Rykka/colorv.vim'
-Bundle 'Rykka/galaxy.vim'
 Bundle 'jasonmorganson/vim-colorscheme'
+"Bundle 'SyntaxAttr.vim'
+"Bundle 'guns/xterm-color-table.vim'
+"Bundle 'Rykka/colorv.vim'
+"Bundle 'Rykka/galaxy.vim'
 " }
 
 " Unite {
