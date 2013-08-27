@@ -17,3 +17,5 @@ set guioptions-=b
 set guioptions=c
 
 "set transparency=5      " Make the window slightly transparent
+
+set fullscreen
