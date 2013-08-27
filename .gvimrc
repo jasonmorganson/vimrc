@@ -1,6 +1,6 @@
 set lines=40                " 40 lines of text instead of 24
 
-set guifont=Source\ Code\ Pro\ Regular\ 10
+set guifont=Source\ Code\ Pro\ for\ Powerline
 
 " Hide the menu
 set guioptions-=m
