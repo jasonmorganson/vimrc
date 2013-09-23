@@ -144,7 +144,7 @@ Bundle 'mattn/gist-vim'
 
 " Javascript, Coffeescript & Node.js {
 Bundle 'moll/vim-node'
-Bundle 'marijnh/tern_for_vim'
+"Bundle 'marijnh/tern_for_vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'elzr/vim-json'
 Bundle 'briancollins/vim-jst'
