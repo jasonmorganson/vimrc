@@ -395,6 +395,7 @@ map <leader>ew :e %%
 map <leader>es :sp %%
 map <leader>ev :vsp %%
 map <leader>et :tabe %%
+map <leader>t :e term://zsh<cr>i
 
 " Fast saving
 nmap <leader>w :w!<cr>
