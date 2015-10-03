@@ -510,3 +510,37 @@ set swapfile
 set directory=~/.vim/swap,.
 
 " }
+
+let g:syntastic_javascript_jshint_exec='/Users/jasonmorganson/.nvm/v0.10.21/bin/jshint'
+let g:syntastic_error_symbol='⚑'
+let g:syntastic_warning_symbol='⚠'
+let g:syntastic_style_error_symbol='≈'
+let g:syntastic_style_warning_symbol='∆'
+
+let g:airline_powerline_fonts = 1
+
+source ~/.simplenoterc
+
+"tnoremap <Esc> <C-\><C-n>
+
+"tnoremap <A-h> <C-\><C-n><C-w>h
+"tnoremap <A-j> <C-\><C-n><C-w>j
+"tnoremap <A-k> <C-\><C-n><C-w>k
+"tnoremap <A-l> <C-\><C-n><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+
+tnoremap <Esc> <C-\><C-n>
+
+"command TODO noautocmd vimgrep /TODO/j **/*.js<CR>:cw<CR>
+"command FIXME noautocmd vimgrep /TODO/j **/*.js<CR>:cw<CR>
+
+
+if has("autocmd") && exists("+omnifunc")
+    autocmd Filetype *
+        \   if &omnifunc == "" |
+        \       setlocal omnifunc=syntaxcomplete#Complete |
+        \   endif
+endif
