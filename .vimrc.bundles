@@ -23,14 +23,15 @@ Bundle 'gmarik/vundle'
 " }
 
 " General {
-Bundle 'matchit.zip'
-Bundle 'tomtom/tlib_vim'
+"Bundle 'matchit.zip'
+"Bundle 'tomtom/tlib_vim'
 Bundle 'airblade/vim-rooter'
 "Bundle 'vim-scripts/ZoomWin'
-Bundle 'vim-scripts/IndexedSearch'
+"Bundle 'vim-scripts/IndexedSearch'
 Bundle 'mutewinter/UnconditionalPaste'
-Bundle 'ShowTrailingWhitespace'
-Bundle 'DeleteTrailingWhitespace'
+"Bundle 'ShowTrailingWhitespace'
+"Bundle 'DeleteTrailingWhitespace'
+Bundle 'ntpeters/vim-better-whitespace'
 Bundle 'spf13/vim-colors'
 Bundle 'spf13/vim-preview'
 Bundle 'tpope/vim-repeat'
@@ -38,13 +39,13 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-abolish.git'
 Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-unimpaired'
-Bundle 'qstrahl/vim-matchmaker'
+"Bundle 'qstrahl/vim-matchmaker'
 Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'terryma/vim-expand-region'
-Bundle 'jceb/vim-shootingstar'
-Bundle 'nelstrom/vim-visual-star-search'
-Bundle 'jasonmorganson/zenzero'
+"Bundle 'terryma/vim-multiple-cursors'
+"Bundle 'terryma/vim-expand-region'
+"Bundle 'jceb/vim-shootingstar'
+"Bundle 'nelstrom/vim-visual-star-search'
+"Bundle 'jasonmorganson/zenzero'
 " }
 
 " Config {
@@ -54,44 +55,55 @@ Bundle 'MarcWeber/vim-addon-local-vimrc'
 " }
 
 " Movement {
-    Bundle 'joeytwiddle/sexy_scroller.vim'
+    "Bundle 'joeytwiddle/sexy_scroller.vim'
     " OR
     "Bundle 'terryma/vim-smooth-scroll'
     "Bundle 'yonchu/accelerated-smooth-scroll'
+"Bundle 'goldfeld/vim-seek'
 Bundle 'Lokaltog/vim-easymotion'
 " }
 
 " Editing {
-Bundle 'UniCycle'
-Bundle 'ervandew/supertab'
+"Bundle 'UniCycle'
+"Bundle 'ervandew/supertab'
+"Bundle 'jiangmiao/auto-pairs'
 Bundle 'Raimondi/delimitMate'
 " }
 
 " IDE {
-Bundle 'xolox/vim-misc'
-Bundle 'xolox/vim-reload'
-Bundle 'xolox/vim-session'
+"Bundle 'xolox/vim-misc'
+"Bundle 'xolox/vim-reload'
+Bundle 'EinfachToll/DidYouMean'
+"Bundle 'dietsche/vim-lastplace'
+"Bundle 'xolox/vim-session'
 Bundle 'mhinz/vim-startify'
     Bundle 'sjl/gundo.vim'
     " OR
     "Bundle 'mbbill/undotree'
-Bundle 'maxbrunsfeld/vim-yankstack'
-Bundle 'bufexplorer.zip'
-Bundle 'scrooloose/nerdtree'
-Bundle 'jistr/vim-nerdtree-tabs'
+"Bundle 'maxbrunsfeld/vim-yankstack'
+"Bundle 'bufexplorer.zip'
+    Bundle 'tpope/vim-vinegar'
+    " OR
+    "Bundle 'scrooloose/nerdtree'
+"Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'thinca/vim-ref'
+Bundle 'Keithbsmiley/investigate.vim'
 " }
 
 " GUI {
 Bundle 'jszakmeister/vim-togglecursor'
 Bundle 'myusuf3/numbers.vim'
-"Bundle 'Yggdroot/indentLine'
+Bundle 'Yggdroot/indentLine'
 Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'milkypostman/vim-togglelist'
-    Bundle 'tomtom/quickfixsigns_vim'
+
+    "Bundle 'Valloric/ListToggle'
     " OR
-    "Bundle 'mhinz/vim-signify'
-    "Bundle 'kshenoy/vim-signature'
+    Bundle 'milkypostman/vim-togglelist'
+
+    "Bundle 'tomtom/quickfixsigns_vim'
+    " OR
+    Bundle 'mhinz/vim-signify'
+    Bundle 'kshenoy/vim-signature'
 " }
 
 " Colorschemes {
@@ -106,33 +118,39 @@ Bundle 'jasonmorganson/vim-colorscheme'
 " }
 
 " Unite {
+Bundle 'Shougo/vimproc.vim'
 Bundle 'Shougo/unite.vim'
+Bundle 'sgur/unite-qf'
 Bundle 'tsukkee/unite-tag', {'autoload':{'unite_sources':['tag','tag/file']}}
 Bundle 'Shougo/unite-outline', {'autoload':{'unite_sources':'outline'}}
 " }
 
 " Powerline {
-Bundle 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
-Bundle 'zhaocai/linepower.vim'
+Bundle "bling/vim-airline"
+"Bundle 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
+"Bundle 'zhaocai/linepower.vim'
 " }
 
 " Completion & Snippets {
+Bundle 'vim-scripts/SyntaxComplete'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
-Bundle 'stephenmckinney/ultisnips-snippets'
-Bundle 'stephenmckinney/vim-dochub'
+"Bundle 'ahayman/vim-nodejs-complete'
+Bundle 'matthewsimo/angular-vim-snippets'
 " }
 
 " Programing {
 Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'tomtom/tcomment_vim'
 Bundle 'godlygeek/tabular'
-if executable('ctags')
-    Bundle 'xolox/vim-easytags'
-    Bundle 'majutsushi/tagbar'
-endif
+"if executable('ctags')
+    "Bundle 'xolox/vim-easytags'
+    "Bundle 'majutsushi/tagbar'
+"endif
 Bundle 'mutewinter/swap-parameters'
+Bundle 'calebsmith/vim-lambdify'
 " }
 
 " Git {
@@ -142,81 +160,95 @@ Bundle 'gregsexton/gitv'
 Bundle 'mattn/gist-vim'
 " }
 
-" Javascript, Coffeescript & Node.js {
+" Javascript, Coffeescript, Node.js & AngularJS {
 Bundle 'moll/vim-node'
-"Bundle 'marijnh/tern_for_vim'
-Bundle 'pangloss/vim-javascript'
-Bundle 'elzr/vim-json'
-Bundle 'briancollins/vim-jst'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'mintplant/vim-literate-coffeescript'
 Bundle 'afshinm/npm.vim'
-Bundle 'carlosvillu/coffeScript-VIM-Snippets'
-Bundle 'othree/coffee-check.vim'
+"Bundle 'marijnh/tern_for_vim'
+
+    "Bundle 'pangloss/vim-javascript'
+    " OR
+    Bundle 'othree/yajs.vim'
+
+Bundle 'othree/javascript-libraries-syntax.vim'
+Bundle 'elzr/vim-json'
+Bundle 'Quramy/vison'
+"Bundle 'kchmck/vim-coffee-script'
+"Bundle 'mintplant/vim-literate-coffeescript'
+"Bundle 'carlosvillu/coffeScript-VIM-Snippets'
+"Bundle 'othree/coffee-check.vim'
+Bundle 'burnettk/vim-angular'
 " }
 
 " C, C++, Objective-C {
-Bundle 'msanders/cocoa.vim'
+"Bundle 'msanders/cocoa.vim'
 " }
 
 " Java {
-Bundle 'derekwyatt/vim-scala'
-Bundle 'derekwyatt/vim-sbt'
+"Bundle 'derekwyatt/vim-scala'
+"Bundle 'derekwyatt/vim-sbt'
 " }
 
 " Ruby {
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-rails'
+"Bundle 'vim-ruby/vim-ruby'
+"Bundle 'tpope/vim-rails'
 " }
 
 " Python {
-Bundle 'klen/python-mode'
-Bundle 'python.vim'
-Bundle 'python_match.vim'
-Bundle 'pythoncomplete'
-Bundle 'ehamberg/vim-cute-python'
+"Bundle 'klen/python-mode'
+"Bundle 'python.vim'
+"Bundle 'python_match.vim'
+"Bundle 'pythoncomplete'
+"Bundle 'ehamberg/vim-cute-python'
 " }
 
 " PHP {
-Bundle 'spf13/PIV'
-Bundle 'arnaud-lb/vim-php-namespace'
+"Bundle 'spf13/PIV'
+"Bundle 'arnaud-lb/vim-php-namespace'
 " }
 
 " Web, HTML, CSS {
 Bundle 'mattn/webapi-vim'
 Bundle 'vim-scripts/indenthtml.vim'
 Bundle 'othree/html5.vim'
-Bundle 'amirh/HTML-AutoCloseTag'
+"Bundle 'amirh/HTML-AutoCloseTag'
 Bundle 'ap/vim-css-color'
 Bundle 'hail2u/vim-css3-syntax'
 Bundle 'groenewege/vim-less'
-Bundle 'wavded/vim-stylus'
+"Bundle 'wavded/vim-stylus'
 Bundle 'tristen/vim-sparkup'
 " }
 
 " Misc {
 Bundle 'tpope/vim-markdown'
-Bundle 'vim-pandoc/vim-pandoc'
+Bundle 'mustache/vim-mustache-handlebars'
+"Bundle 'vim-pandoc/vim-pandoc'
 Bundle 'saltstack/salt-vim'
+Bundle 'ekalinin/Dockerfile.vim'
 " }
 
 " Templating {
-Bundle 'digitaltoad/vim-jade'
+"Bundle 'digitaltoad/vim-jade'
 " }
 
 " Testing {
-Bundle 'tpope/vim-cucumber'
-Bundle 'quentindecock/vim-cucumber-align-pipes'
+"Bundle 'tpope/vim-cucumber'
+"Bundle 'quentindecock/vim-cucumber-align-pipes'
 " }
 
 " Debugging {
-Bundle 'joonty/vdebug.git'
+"Bundle 'joonty/vdebug.git'
 " }
 
 " Other {
-Bundle 'wakatime/vim-wakatime'
-Bundle 'ironcamel/vimchat'
-Bundle 'vim-scripts/TwitVim'
+Bundle 'aquach/vim-http-client'
+"Bundle 'rizzatti/funcoo.vim'
+Bundle 'rizzatti/dash.vim'
+Bundle 'mrtazz/simplenote.vim'
+"Bundle 'im-scripts/TaskList.vim'
+"Bundle 'freitass/todo.txt-vim'
+"Bundle 'wakatime/vim-wakatime'
+"Bundle 'ironcamel/vimchat'
+"Bundle 'vim-scripts/TwitVim'
 " }
 
 " Configuration {
