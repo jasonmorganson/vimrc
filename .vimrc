@@ -254,7 +254,7 @@ set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
 
 
 "set completeopt+=longest 	" better omni-complete menu
-  set formatoptions+=j 	" delete comment char on second line when
+set formatoptions+=j    " delete comment char on second line when
                         " joining two commented lines
 set nrformats-=octal      " don't treat numbers with leading zeros as octal
                           " when incrementing/decrementing
@@ -276,6 +276,8 @@ set shortmess+=filmnrxoOtTA
 " content of the active window
 set autochdir
 
+set vb " Disable audio and visual bells
+"
 " }
 " }
 
