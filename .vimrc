@@ -416,20 +416,23 @@ map <Leader>= <C-w>=
 
 nmap \b :set <C-R>=&laststatus == 0 ? 'laststatus=2' : 'laststatus=0'<CR><CR>
 nmap \c :setlocal cursorline!<CR>
-nmap \e :setlocal <C-R>=&colorcolumn == '+1' ? 'colorcolumn=0' : 'colorcolumn=+1'<CR><CR>
+nmap \d :SignifyToggleHighlight<CR>
+nmap \e :setlocal <C-R>=&colorcolumn == '+1' ? 'colorcolumn=0 formatoptions-=t' : 'colorcolumn=+1 formatoptions+=t' <CR><CR>
 nmap \f :setlocal <C-R>=&foldcolumn == 1 ? 'foldcolumn=0' : 'foldcolumn=1'<CR><CR>
-nmap \i :IndentGuidesToggle<CR>
+nmap \i :IndentLinesToggle<CR>
+nmap \g :IndentGuidesToggle<CR>
 nmap \l :setlocal number!<CR>:setlocal relativenumber!<CR>:setlocal number?<CR>:setlocal relativenumber?<CR>
 nmap \n :setlocal number!<CR>:setlocal number?<CR>
 nmap \m :MatchmakerToggle<CR>
 nmap \p :set paste!<CR>
-nmap \q :QuickfixsignsToggle<CR>
+nmap \q :SignifyToggle<CR>
 nmap \r :setlocal relativenumber!<CR>:setlocal relativenumber?<CR>
 nmap \s :setlocal invspell<CR>
 nmap \t :<C-u>call ShowTrailingWhitespace#Toggle(0)<Bar>echo (ShowTrailingWhitespace#IsSet() ? 'Show trailing whitespace' : 'Not showing trailing whitespace')<CR>
 nmap \u :setlocal list!<CR>:setlocal list?<CR>
 nmap \w :setlocal wrap!<CR>:setlocal wrap?<CR>
 nmap \x :setlocal cursorcolumn!<CR>
+nmap \y :SyntasticToggle<CR>
 nmap \/ :setlocal invhlsearch<CR>
 
 " }
