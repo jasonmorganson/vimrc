@@ -22,22 +22,6 @@ set nocompatible  " be iMproved
 " the plugins.
 let mapleader=","
 
-" Install vim-plug {
-    if empty(glob('~/.vim/autoload/plug.vim'))
-      silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-      autocmd VimEnter * PlugInstall | source $MYVIMRC
-    endif
-" }
-
-" Use plug config {
-    if filereadable(expand("~/.vim-plugins"))
-        call plug#begin('~/.plugged')
-        source ~/.vim-plugins
-        call plug#end()
-    endif
-" }
-
 " Filetype {
 " File-type highlighting and configuration.
 " Run :filetype (without args) to see what you may have
