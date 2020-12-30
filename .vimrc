@@ -1,5 +1,5 @@
 " Modeline {
-" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
+" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker:
 " }
 " Notes {
 "
@@ -22,11 +22,22 @@ set nocompatible  " be iMproved
 " the plugins.
 let mapleader=","
 
-" Use bundles config {
-    if filereadable(expand("~/.vimrc.bundles"))
-        source ~/.vimrc.bundles
+" Install vim-plug {
+    if empty(glob('~/.vim/autoload/plug.vim'))
+      silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+      autocmd VimEnter * PlugInstall | source $MYVIMRC
     endif
 " }
+
+" Use plug config {
+    if filereadable(expand("~/.vim-plugins"))
+        call plug#begin('~/.plugged')
+        source ~/.vim-plugins
+        call plug#end()
+    endif
+" }
+
 " Filetype {
 " File-type highlighting and configuration.
 " Run :filetype (without args) to see what you may have
@@ -49,10 +60,6 @@ scriptencoding utf-8
 set encoding=utf-8
 
 " }
-
-" Theme
-colorscheme jason
-
 " Settings {
 " Cursor {
 
@@ -102,13 +109,15 @@ set whichwrap=b,s,h,l,<,>,[,]
 set linebreak
 
 " String to put before wrapped screen lines
-set showbreak=↪\ \
+"set showbreak=↪\ \
 
 " }
 " Tabs {
+set showtabline=0         " Turn off tabline
 set autoindent            " Indent at the same level of the previous line
 set smartindent
 set smarttab              " <TAB> in front of line inserts 'shiftwidth' blanks
+"set nosmarttab
 set shiftround            " Round to 'shiftwidth' for "<<" and ">>"
 set expandtab             " Tabs are spaces, not tabs
 set tabstop=4             " An indentation every four columns
@@ -126,18 +135,19 @@ set foldenable                  " Auto fold code
 set foldcolumn=1
 " }
 " Line numbers {
-set number                          " Line numbers on
+set nonumber                          " Line numbers on
+set norelativenumber                  " Relative line numbers on
 set numberwidth=4
 " }
 " Color column {
-set colorcolumn=+1
+set colorcolumn=0
 " }
 " Conceal {
 set conceallevel=2
 set concealcursor=nc
 " }
 " Spelling {
-set spell                           " Spell checking on
+set nospell                           " Spell checking on
 set spelllang=en_us
 " }
 " Search {
@@ -149,13 +159,13 @@ set gdefault                    " For :substitute, use the /g flag by default
 "}
 " Wild menu {
 
-set complete-=i
+"set complete-=i
 
 " Show list instead of just completing
-set wildmenu                    " Show list instead of just completing
+"set wildmenu                    " Show list instead of just completing
 
 " Command <Tab> completion, list matches, then longest common part, then all.
-set wildmode=list:longest,full
+"set wildmode=list:longest,full
 
 " }
 " List {
@@ -179,12 +189,26 @@ set hidden
 set history=1000                    " Store a ton of history (default is 20)
 " }
 " Windows {
+
 set winminheight=0              " Windows can be 0 line high
+
+set splitbelow
+set splitright
+
 " }
 " View {
 
 " Better Unix / Windows compatibility
 set viewoptions=folds,options,cursor,unix,slash
+
+" }
+" Timeouts {
+
+" Mapping delay
+set timeoutlen=1000
+
+" Key code delay
+set ttimeoutlen=0
 
 " }
 " Editing {
@@ -202,8 +226,8 @@ set backspace=indent,eol,start
 " }
 " Clipboard {
 
-" Link the system clipboard with the unnamed register
-set clipboard=unnamed
+" Link the system clipboard with the unnamed (*) and unnamedplus (+) registers
+set clipboard=unnamed,unnamedplus
 
 " Visual selection automatically copied to the clipboard
 set go+=a
@@ -225,20 +249,20 @@ set cmdheight=2
 
 " }
 " Status line {
-if has('statusline')
-    set laststatus=2
-
-    " Broken down into easily includeable segments
-    set statusline=%<%f\                     " Filename
-    set statusline+=%w%h%m%r                 " Options
-    set statusline+=%{fugitive#statusline()} " Git Hotness
-    set statusline+=\ [%{&ff}/%Y]            " Filetype
-    set statusline+=\ [%{getcwd()}]          " Current dir
-    set statusline+=%#warningmsg#
-    set statusline+=%{SyntasticStatuslineFlag()}  " Syntastic Goodness
-    set statusline+=%*
-    set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
-endif
+" if has('statusline')
+"     set laststatus=2
+"
+"     " Broken down into easily includeable segments
+"     set statusline=%<%f\                     " Filename
+"     set statusline+=%w%h%m%r                 " Options
+"     set statusline+=%{fugitive#statusline()} " Git Hotness
+"     set statusline+=\ [%{&ff}/%Y]            " Filetype
+"     set statusline+=\ [%{getcwd()}]          " Current dir
+"     set statusline+=%#warningmsg#
+"     set statusline+=%{SyntasticStatuslineFlag()}  " Syntastic Goodness
+"     set statusline+=%*
+"     set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+" endif
 " }
 " Misc {
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
@@ -252,8 +276,9 @@ set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
 
 "set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
 
+"set completeopt-=preview
+set completeopt+=menu,menuone " better omni-complete menu
 
-"set completeopt+=longest 	" better omni-complete menu
 set formatoptions+=j    " delete comment char on second line when
                         " joining two commented lines
 set nrformats-=octal      " don't treat numbers with leading zeros as octal
@@ -270,29 +295,18 @@ set magic
 
 
 " abbrev. of messages (avoids 'hit enter')
-set shortmess+=filmnrxoOtTA
+set shortmess+=cfilmnrxoOtTA
 
 " current directory is always matching the
 " content of the active window
-set autochdir
+" set autochdir
 
-set vb " Disable audio and visual bells
+set belloff=all " Disable audio and visual bells
 "
 " }
 " }
 
 " Mappings {
-
-" Fixes {
-
-" Fix home and end keybindings for screen, particularly on mac
-" - for some reason this fixes the arrow keys too. huh.
-map [F $
-imap [F $
-map [H g0
-imap [H g0
-
-" }
 
 " Consistency {
 
@@ -399,6 +413,11 @@ map <leader>ev :vsp %%
 map <leader>et :tabe %%
 map <leader>t :e term://zsh<cr>i
 
+" GitV
+nmap <leader>gv :Gitv --all<cr>
+nmap <leader>gV :Gitv! --all<cr>
+vmap <leader>gV :Gitv! --all<cr>
+
 " Fast saving
 nmap <leader>w :w!<cr>
 
@@ -418,10 +437,8 @@ map <Leader>= <C-w>=
 nmap \b :set <C-R>=&laststatus == 0 ? 'laststatus=2' : 'laststatus=0'<CR><CR>
 nmap \c :setlocal cursorline!<CR>
 nmap \d :SignifyToggleHighlight<CR>
-nmap \e :setlocal <C-R>=&colorcolumn == '+1' ? 'colorcolumn=0 formatoptions-=t' : 'colorcolumn=+1 formatoptions+=t' <CR><CR>
+nmap \e :setlocal <C-R>=&colorcolumn == '0' ? 'colorcolumn=+1 formatoptions+=t' : 'colorcolumn=0 formatoptions-=t' <CR><CR>
 nmap \f :setlocal <C-R>=&foldcolumn == 1 ? 'foldcolumn=0' : 'foldcolumn=1'<CR><CR>
-nmap \i :IndentLinesToggle<CR>
-nmap \g :IndentGuidesToggle<CR>
 nmap \l :setlocal number!<CR>:setlocal relativenumber!<CR>:setlocal number?<CR>:setlocal relativenumber?<CR>
 nmap \n :setlocal number!<CR>:setlocal number?<CR>
 nmap \m :MatchmakerToggle<CR>
@@ -445,6 +462,18 @@ nmap <silent> <A-Up>    :wincmd k<CR>
 nmap <silent> <A-Down>  :wincmd j<CR>
 nmap <silent> <A-Left>  :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
+
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+
+if has('nvim')
+    tnoremap <A-h> <C-\><C-n><C-w>h
+    tnoremap <A-j> <C-\><C-n><C-w>j
+    tnoremap <A-k> <C-\><C-n><C-w>k
+    tnoremap <A-l> <C-\><C-n><C-w>l
+endif
 
 " }
 
@@ -478,14 +507,45 @@ nnoremap <silent> gb :exe('!w3m "'.expand('<cfile>').'"')<CR>
 " For when you forget to sudo.. Really Write the file.
 cmap w!! w !sudo tee % >/dev/null
 
+if has('nvim')
+    tnoremap <Esc> <C-\><C-n>
+endif
+
 " }
 
+" }
+
+" Abbreviations {
+" Commands {
+
+cabbrev git Git
+
+" }
+" Replacements {
+
+iabbrev --- —
+iabbrev ... …
+
+" }
 " }
 
 " VIM Folders {
 
-" VIM info file
-set viminfo+=n~/.vim/viminfo
+" Ensure directory exists
+function! EnsureDirExists (dir)
+  if !isdirectory(a:dir)
+    if exists('*mkdir')
+      silent call mkdir(a:dir, 'p')
+    endif
+  endif
+endfunction
+
+" Make folders if they dont exist
+call EnsureDirExists($HOME.'/.vim/tags')
+call EnsureDirExists($HOME.'/.vim/undo')
+call EnsureDirExists($HOME.'/.vim/view')
+call EnsureDirExists($HOME.'/.vim/swap')
+call EnsureDirExists($HOME.'/.vim/backup')
 
 " Tags
 set tags=./tags,tags,~/.vim/tags
@@ -512,36 +572,11 @@ set directory=~/.vim/swap,.
 
 " }
 
-let g:syntastic_javascript_jshint_exec='/Users/jasonmorganson/.nvm/v0.10.21/bin/jshint'
-let g:syntastic_error_symbol='⚑'
-let g:syntastic_warning_symbol='⚠'
-let g:syntastic_style_error_symbol='≈'
-let g:syntastic_style_warning_symbol='∆'
+set ttyfast
 
-let g:airline_powerline_fonts = 1
+set termguicolors
 
-source ~/.simplenoterc
+"
+" Theme
+silent! colorscheme jason
 
-"tnoremap <Esc> <C-\><C-n>
-
-"tnoremap <A-h> <C-\><C-n><C-w>h
-"tnoremap <A-j> <C-\><C-n><C-w>j
-"tnoremap <A-k> <C-\><C-n><C-w>k
-"tnoremap <A-l> <C-\><C-n><C-w>l
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
-
-tnoremap <Esc> <C-\><C-n>
-
-"command TODO noautocmd vimgrep /TODO/j **/*.js<CR>:cw<CR>
-"command FIXME noautocmd vimgrep /TODO/j **/*.js<CR>:cw<CR>
-
-
-if has("autocmd") && exists("+omnifunc")
-    autocmd Filetype *
-        \   if &omnifunc == "" |
-        \       setlocal omnifunc=syntaxcomplete#Complete |
-        \   endif
-endif
