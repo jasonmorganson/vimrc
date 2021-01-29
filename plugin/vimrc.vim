@@ -505,12 +505,6 @@ endif
 cabbrev git Git
 
 " }
-" Replacements {
-
-iabbrev --- —
-iabbrev ... …
-
-" }
 " }
 
 " VIM Folders {
